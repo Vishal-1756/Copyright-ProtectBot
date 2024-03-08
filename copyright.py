@@ -51,13 +51,13 @@ START_MESSAGE = """
 
 BUTTON = [[InlineKeyboardButton("+ Add me in group +", url="http://t.me/AntiCopyRightRobot?startgroup=s&admin=delete_messages")]]
 
-RiZoeL = Client('RiZoeL-Anti-CopyRight', api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+bot = Client('bot', api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 def add_user(user_id):
    if user_id not in TOTAL_USERS:
       TOTAL_USERS.append(user_id)
 
-@RiZoeL.on_message(filters.command(["ping", "speed"]))
+@bot.on_message(filters.command(["ping", "speed"]))
 async def ping(_, e: Message):
    start = datetime.datetime.now()
    add_user(e.from_user.id)
@@ -66,23 +66,23 @@ async def ping(_, e: Message):
    ms = (end-start).microseconds / 1000
    await rep.edit_text(f"🤖 **PONG**: `{ms}`ᴍs")
 
-@RiZoeL.on_message(filters.command(["help", "start"]))
+@bot.on_message(filters.command(["help", "start"]))
 async def start_message(_, message: Message):
    add_user(message.from_user.id)
    await message.reply(START_MESSAGE.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(BUTTON))
 
-@RiZoeL.on_message(filters.user(DEVS) & filters.command(["restart", "reboot"]))
+@bot.on_message(filters.user(DEVS) & filters.command(["restart", "reboot"]))
 async def restart_(_, e: Message):
    await e.reply("**Restarting.....**")
    try:
-      await RiZoeL.stop()
+      await bot.stop()
    except Exception:
       pass
    args = [sys.executable, "copyright.py"]
    os.execl(sys.executable, *args)
    quit()
 
-@RiZoeL.on_message(filters.user(DEVS) & filters.command(["stat", "stats"]))
+@bot.on_message(filters.user(DEVS) & filters.command(["stat", "stats"]))
 async def status(_, message: Message):
    wait = await message.reply("Fetching.....")
    stats = "**Here is total stats of me!** \n\n"
@@ -90,12 +90,12 @@ async def status(_, message: Message):
    stats += f"Total users: `{len(TOTAL_USERS)}` \n"
    stats += f"Disabled chats: `{len(DISABLE_CHATS)}` \n"
    stats += f"Total Media active chats: `{len(MEDIA_GROUPS)}` \n\n"
-   #stats += f"**© @RiZoeLX**"
+   #stats += f"**© @Lemonade0_0**"
    await wait.edit_text(stats)
 
 
    
-@RiZoeL.on_message(filters.command(["anticopyright", "copyright"]))
+@bot.on_message(filters.command(["anticopyright", "copyright"]))
 async def enable_disable(Rizoel: RiZoeL, message: Message):
    chat = message.chat
    if chat.id == message.from_user.id:
@@ -137,7 +137,7 @@ async def enable_disable(Rizoel: RiZoeL, message: Message):
        else:
           await message.reply("Anti-Copyright is enable for this chat! \n\ntype `/anticopyright disable` to disable Anti-CopyRight")
 
-@RiZoeL.on_message(filters.all & filters.group)
+@bot.on_message(filters.all & filters.group)
 async def watcher(_, message: Message):
    chat = message.chat
    user_id = message.from_user.id
@@ -189,7 +189,7 @@ scheduler.start()
 
 def starter():
    print('starting bot...')
-   RiZoeL.start()
+   bot.start()
    print('bot Started ✓')
    idle()
 
