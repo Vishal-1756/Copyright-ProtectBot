@@ -49,7 +49,7 @@ START_MESSAGE = """
  **Process?:** Simply add me in your group and promote as admin with delete messages right!
 """
 
-BUTTON = [[InlineKeyboardButton("+ Add me in group +", url="http://t.me/AntiCopyRightRobot?startgroup=s&admin=delete_messages")]]
+BUTTON = [[InlineKeyboardButton("+ Add me in group +", url="http://t.me/AntiCopy_Robot?startgroup=s&admin=delete_messages")]]
 
 bot = Client('bot', api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
@@ -188,9 +188,9 @@ scheduler.add_job(AutoDelete, "interval", seconds=3600)
 scheduler.start()
 
 def starter():
-   print('starting bot...')
+   print('Starting Bot...')
    bot.start()
-   print('bot Started ✓')
+   print('Bot Started ✓')
    idle()
 
 if __name__ == "__main__":
