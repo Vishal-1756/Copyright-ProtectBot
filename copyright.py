@@ -14,9 +14,9 @@ from pyrogram.enums import ChatMemberStatus, ChatType
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
-API_ID = 23659727
-API_HASH = "b8a345d0b0208c0b46c5522164de8c4f"
-BOT_TOKEN = "6865329209:AAE9cPgn02EemD_TvmLeJny-EFw1j4qVm1M"
+API_ID = os.getenv("API_ID")
+API_HASH = os.getenv("API_HASH")
+BOT_TOKEN = os.getenv("TOKEN")
 DEVS = [5690711835, 6312693124]
 
 ALL_GROUPS = []
