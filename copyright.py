@@ -96,7 +96,7 @@ async def status(_, message: Message):
 
    
 @bot.on_message(filters.command(["anticopyright", "copyright"]))
-async def enable_disable(Rizoel: RiZoeL, message: Message):
+async def enable_disable(bot: bot, message: Message):
    chat = message.chat
    if chat.id == message.from_user.id:
       await message.reply("Use this command in group!")
