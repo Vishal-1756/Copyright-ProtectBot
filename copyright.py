@@ -175,6 +175,7 @@ def AutoDelete():
           time.sleep(1)
           hue.delete()
           GROUP_MEDIAS[i].delete()
+          gue = bot.send_message(i, text="Deleted All Media's")
        except Exception:
           pass
     MEDIA_GROUPS.remove(i)
@@ -182,7 +183,7 @@ def AutoDelete():
     print("waiting for 1 hour")
 
 scheduler = BackgroundScheduler(timezone=timezone('Asia/Kolkata'))
-scheduler.add_job(AutoDelete, "interval", seconds=300)
+scheduler.add_job(AutoDelete, "interval", seconds=3600)
 scheduler.start()
 
 def starter():
