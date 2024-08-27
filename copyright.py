@@ -1,4 +1,3 @@
-
 import os
 import re
 import sys
@@ -6,7 +5,7 @@ import time
 import datetime
 import random 
 import asyncio
-
+from pytz import timezone
 from pyrogram import filters, Client, idle
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.enums import ChatMemberStatus, ChatType
@@ -103,7 +102,7 @@ async def enable_disable(bot: bot, message: Message):
       return
    txt = ' '.join(message.command[1:])
    if txt:
-      member = await Rizoel.get_chat_member(chat.id, message.from_user.id)
+      member = await bot.get_chat_member(chat.id, message.from_user.id)
       if re.search("on|yes|enable".lower(), txt.lower()):
          if member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR] or member.user.id in DEVS:
             if chat.id in DISABLE_CHATS:
@@ -171,9 +170,9 @@ def AutoDelete():
          return
        message_list = list(GROUP_MEDIAS.get(i))
        try:
-          hue = RiZoeL.send_message(i, random.choice(DELETE_MESSAGE))
-          RiZoeL.delete_messages(i, message_list, revoke=True)
-          asyncio.sleep(1)
+          hue = bot.send_message(i, random.choice(DELETE_MESSAGE))
+          bot.delete_messages(i, message_list, revoke=True)
+          time.sleep(1)
           hue.delete()
           GROUP_MEDIAS[i].delete()
        except Exception:
@@ -182,9 +181,8 @@ def AutoDelete():
     print("clean all medias ✓")
     print("waiting for 1 hour")
 
-scheduler = BackgroundScheduler()
-scheduler.add_job(AutoDelete, "interval", seconds=3600)
-
+scheduler = BackgroundScheduler(timezone=timezone('Asia/Kolkata'))
+scheduler.add_job(AutoDelete, "interval", seconds=300)
 scheduler.start()
 
 def starter():
