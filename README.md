@@ -31,9 +31,17 @@ Copyright-ProtectBot is a Telegram bot that automatically deletes all media from
    ```
 3. Fill your developer ID in `copyright.py`.
 
-4. Deploy to Heroku:
+4. Deploy to StackHost:
 
-   [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://github.com/Vishal-1756/Copyright-ProtectBot)
+<div align="left">
+  <a href="https://t.me/StackHost">
+     <img src="https://via.placeholder.com/30x1/ffffff/ffffff" alt="spacer" width="30" />
+     <img src="https://graph.org/file/7e91d83f67d20f158cfdc.jpg" alt="Deploy On StackHost" width="150" />
+  </a>
+</div>
+
+
+   
 
 ## Note 📝
 
