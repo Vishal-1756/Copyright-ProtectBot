@@ -165,7 +165,6 @@ def AutoDelete():
        return
 
     for i in MEDIA_GROUPS:
-       addchat(i)
        if i in DISABLE_CHATS:
          return
        message_list = list(GROUP_MEDIAS.get(i))
