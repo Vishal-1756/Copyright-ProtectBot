@@ -1,5 +1,3 @@
-
-
 # Copyright-ProtectBot 🤖
 
 [![GitHub issues](https://img.shields.io/github/issues/Vishal-1756/Copyright-ProtectBot)](https://github.com/Vishal-1756/Copyright-ProtectBot/issues)
@@ -8,54 +6,73 @@
 
 ## Overview 🚀
 
-Copyright-ProtectBot is a Telegram bot that automatically deletes all media from a group after 1 hour. This helps in protecting the copyright of media shared in the group.
+**Copyright-ProtectBot** is a powerful Telegram bot designed to protect the copyright of media shared in groups by automatically deleting them after 1 hour. It also provides functionalities to enable or disable media deletion on a per-group basis and includes various commands for bot management and monitoring.
 
-## Features 🌟
+## Features 
 
-- 🤖 Automatically deletes media after 1 hour.
-- 📅 Protects copyright of shared media.
+- **Automatic Media Deletion**: Deletes all media (photos, videos, animations, documents) in the group after 1 hour.
+- **Enable/Disable Media Deletion**: Group admins can enable or disable the auto-deletion feature.
+- **Its Also Delete Edited Messages**: Its make sure edited messages don't cause copyright strikes.
 
-## Usage 🚦
+## Installation and Usage 🚦
 
-1. Clone the repository:
+#### Prerequisites
 
-   ```bash
-   git clone https://github.com/Vishal-1756/Copyright-ProtectBot.git
-   ```
+- Python 3.7+
+- [Telegram API ID & Hash](https://my.telegram.org) and [Bot Token](https://t.me/BotFather)
 
-2. Environmental Variables
-   ```markdown
-   API_ID :- get from mytelegram.org
-   API_HASH :- get from mytelegram.org
-   TOKEN :- get from Bot Father In telegram
-   BOT_USERNAME :- get from Bot Father
-   ```
-2. Environmental Variables
-   ```markdown
-   /anticopy :- get from mytelegram.org
-   API_HASH :- get from mytelegram.org
-   TOKEN :- get from Bot Father In telegram
-   BOT_USERNAME :- get from Bot Father
-   ```
-   
-4. Deploy to StackHost:
+#### 1. Clone the repository:
+
+```bash
+git clone https://github.com/Vishal-1756/Copyright-ProtectBot.git
+cd Copyright-ProtectBot
+```
+
+#### 2. Set up environment variables:
+
+Create a `.env` file in the root directory and add the following:
+
+```env
+API_ID=your_api_id
+API_HASH=your_api_hash
+BOT_TOKEN=your_bot_token
+BOT_USERNAME=your_bot_username
+```
+
+#### 3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Run the bot:
+
+```bash
+python copyright.py
+```
+
+#### 5. Deploy to StackHost (Optional):
 
 <div align="left">
   <a href="https://t.me/StackHost">
-     <img src="https://via.placeholder.com/30x1/ffffff/ffffff" alt="spacer" width="30" />
      <img src="https://graph.org/file/7e91d83f67d20f158cfdc.jpg" alt="Deploy On StackHost" width="150" />
   </a>
 </div>
 
+## Commands List 📋
 
-   
+- `/ping` or `/speed`: Check the bot's response time.
+- `/start` or `/help`: Display the bot's introduction message.
+- `/anticopyright [enable|disable]`: Enable or disable the media deletion feature for a group (admin only).
+- `/stats`: Show the total number of groups, users, and other statistics.
+- `/restart`: Restart the bot (developer only).
 
-## Note 📝
+## How It Works 🛠️
 
-Please ensure to fill in your developer ID in the `copyright.py` file.
+1. **Media Deletion**: The bot tracks all media shared in a group and schedules their deletion after 1 hour.
+2. **Group Management**: Admins can use the `/anticopyright` command to enable or disable media deletion for their group.
+3. **Bot Monitoring**: Developers can restart the bot or check its statistics using the provided commands.
 
-## Demo Bot 🤖
+## Contributing 🛠
 
-Check out the demo bot in action: [AntiCopy_Robot](http://t.me/AntiCopy_Robot)
-
-Feel free to contribute, open issues, or star the repository if you find it useful! 🌟
+Feel free to fork the repository, make improvements, and submit pull requests. Open issues if you encounter any bugs or have feature requests.
