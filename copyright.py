@@ -163,7 +163,7 @@ async def watcher(_, message: Message):
             print(f"Chat: {chat.title}, message ID: {message.id}")
 
 # Edit Handlers 
-@app.on_raw_update(group=-1)
+@bot.on_raw_update(group=-1)
 async def better(client, update, _, __):
     if isinstance(update, UpdateEditMessage) or isinstance(update, UpdateEditChannelMessage):
         e = update.message
