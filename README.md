@@ -28,9 +28,16 @@ Copyright-ProtectBot is a Telegram bot that automatically deletes all media from
    API_ID :- get from mytelegram.org
    API_HASH :- get from mytelegram.org
    TOKEN :- get from Bot Father In telegram
+   BOT_USERNAME :- get from Bot Father
    ```
-3. Fill your developer ID in `copyright.py`.
-
+2. Environmental Variables
+   ```markdown
+   /anticopy :- get from mytelegram.org
+   API_HASH :- get from mytelegram.org
+   TOKEN :- get from Bot Father In telegram
+   BOT_USERNAME :- get from Bot Father
+   ```
+   
 4. Deploy to StackHost:
 
 <div align="left">
