@@ -9,6 +9,8 @@ from pytz import timezone
 from pyrogram import filters, Client, idle
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.enums import ChatMemberStatus, ChatType
+from pyrogram.raw.types import UpdateEditMessage, UpdateEditChannelMessage
+import traceback
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -159,6 +161,31 @@ async def watcher(_, message: Message):
          else:
             GROUP_MEDIAS[chat.id] = [message.id]
             print(f"Chat: {chat.title}, message ID: {message.id}")
+
+# Edit Handlers 
+@app.on_raw_update(group=-1)
+async def better(client, update, _, __):
+    if isinstance(update, UpdateEditMessage) or isinstance(update, UpdateEditChannelMessage):
+        e = update.message
+        try:            
+            if not getattr(e, 'edit_hide', False):      
+                user_id = e.from_id.user_id
+                if user_id in DEVS:
+                    return
+
+                chat_id = f"-100{e.peer_id.channel_id}"
+               
+                await client.delete_messages(chat_id=chat_id, message_ids=e.id)               
+                
+                user = await client.get_users(e.from_id.user_id)
+                
+                await client.send_message(
+                    chat_id=chat_id,
+                    text=f"{user.mention} just edited a message, and I deleted it 🐸."
+                )
+        except Exception as ex:
+            print("Error occurred:", traceback.format_exc())
+         
 
 def AutoDelete():
     if len(MEDIA_GROUPS) == 0:
