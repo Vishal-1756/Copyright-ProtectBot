@@ -1,13 +1,17 @@
 user:
-  name: vishal-1756
-  github: vishal-1756
+  name: akito
+  github: THE-AKITO 
 
-python_version: "3.11"
+language: "python"
+python_version: "3.10"
 
 commands:
   build:
     - "pip install -r requirements.txt"
-  
+  package:
+    - "nano inxi"
   start:
     - "python3 copyright.py"
 
+env:
+  - "ENVIRONMENT=production"
